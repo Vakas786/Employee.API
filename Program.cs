@@ -16,16 +16,16 @@ using System.Text;
 using System.Threading.RateLimiting;
 
 var builder = WebApplication.CreateBuilder(args);
-var keyVaultUrl = new Uri("https://vakas2026.vault.azure.net/");
+//var keyVaultUrl = new Uri("https://vakas2026.vault.azure.net/");
 builder.Services.AddApplicationInsightsTelemetry(options =>
 {
     options.ConnectionString =
         builder.Configuration["ApplicationInsights:ConnectionString"];
 });
 
-builder.Configuration.AddAzureKeyVault(
-    keyVaultUrl,
-    new DefaultAzureCredential());
+//builder.Configuration.AddAzureKeyVault(
+//    keyVaultUrl,
+//    new DefaultAzureCredential());
 Log.Logger = new LoggerConfiguration()
     .ReadFrom.Configuration(builder.Configuration)
     .Enrich.FromLogContext()
