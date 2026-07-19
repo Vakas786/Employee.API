@@ -1,5 +1,6 @@
 using Asp.Versioning;
 using AutoMapper;
+using Azure.Identity;
 using Employee.API.Data;
 using Employee.API.Extensions;
 using Employee.API.Interfaces;
@@ -13,6 +14,12 @@ using System.Threading.RateLimiting;
 
 var builder = WebApplication.CreateBuilder(args);
 
+
+var keyVaultUrl = new Uri("https://vakas2026.vault.azure.net/");
+
+builder.Configuration.AddAzureKeyVault(
+    keyVaultUrl,
+    new DefaultAzureCredential());
 // ==========================================
 // Serilog
 // ==========================================
